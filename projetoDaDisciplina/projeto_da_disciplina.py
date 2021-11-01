@@ -14,9 +14,9 @@ def trata_resultados(matriz_nsfnet, matriz_geant2):
     matriz_nsfnet = matriz_nsfnet[np.lexsort((matriz_nsfnet[:, 2], matriz_nsfnet[:, 1]))]
     matriz_geant2 = matriz_geant2[np.lexsort((matriz_geant2[:, 2], matriz_geant2[:, 1]))]
     a = np.concatenate([matriz_nsfnet, matriz_geant2])
-
-    for array in a:
-        print(array)
+    # Debug
+    # for array in a:
+        # print(array)
     a = a[np.lexsort((a[:, 2], a[:, 1]))]
     # print(len(a))
     result_slice = []
