@@ -1,0 +1,9 @@
+# Esses dados sao dispostos da seguinte forma:
+# Matriz K; No de origem; No de destino; No de origem no grafo; No de destino no grafo; Valor da solucao da funcao objetivo; Valor maximo aceitado pela maximizacao
+0 4 5 5 13 3 15
+1 4 5 5 13 5 15
+2 4 5 5 13 5 15
+0 4 5 7 17 4 15
+1 4 5 7 17 8 15
+2 4 5 7 17 4 15
+# Obs: as 3 primeiras matrizes sao do grafo NSFNET, as 3 ultimas sao do grafo GEANT2

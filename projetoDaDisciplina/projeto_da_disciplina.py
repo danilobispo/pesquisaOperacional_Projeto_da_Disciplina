@@ -6,6 +6,36 @@ import datasets.nsfnet.nsfnet as nsfnet
 import datasets.geant2.geant2 as geant2
 import funcoes_auxiliares as faux
 
+
+def trata_resultados(matriz_nsfnet, matriz_geant2):
+    matriz_nsfnet = np.array(matriz_nsfnet)
+    matriz_geant2 = np.array(matriz_geant2)
+    # Ordena pela 2ª e 3ª coluna (source_node, target_node)
+    matriz_nsfnet = matriz_nsfnet[np.lexsort((matriz_nsfnet[:, 2], matriz_nsfnet[:, 1]))]
+    matriz_geant2 = matriz_geant2[np.lexsort((matriz_geant2[:, 2], matriz_geant2[:, 1]))]
+    a = np.concatenate([matriz_nsfnet, matriz_geant2])
+
+    for array in a:
+        print(array)
+    a = a[np.lexsort((a[:, 2], a[:, 1]))]
+    # print(len(a))
+    result_slice = []
+    i = 0
+    while i <= len(a):
+        result_slice.append(a[i:(i+6)])
+        i += 6
+    # result_slice = result_slice.astype(int)
+    for i in range(len(result_slice) - 1):
+        np.savetxt("resultados/maxflow/resultados_cliente_%d.txt" % i, result_slice[i], fmt="%d", header=
+        "Esses dados sao dispostos da seguinte forma:\nMatriz K; No de origem; No de destino; No de origem no grafo; " +
+        "No de destino no grafo; Valor da solucao da funcao objetivo; Valor maximo aceitado pela maximizacao"
+        , footer="Obs: as 3 primeiras matrizes sao do grafo NSFNET, as 3 ultimas sao do grafo GEANT2")
+    # Debug
+    # print(matriz_nsfnet)
+    # print(matriz_geant2)
+    # print(a)
+    # print(len(result_slice))
+    # print(result_slice)
 #
 #
 #
@@ -71,7 +101,7 @@ for j in range(N):
         if subtraction_array[0][j] != 0:
             cost_matrix.append(abs(subtraction_array[0][j] - subtraction_array[1][i]))
         else:
-            cost_matrix.append(9999)
+            cost_matrix.append(0)
 
 cost_matrix = np.reshape(cost_matrix, (N, N))
 print("Matriz de custo entre os nós de entrada e saída cij: \n", cost_matrix)
@@ -122,21 +152,23 @@ solution_array = []
 # Print da solução:
 print("----------------------------------Resultado-----------------------------------------")
 print('Solucao:')
-print('Valor objetivo = %.d' % (solver.Objective().Value() - 9999))
+print('Valor objetivo = %.d' % (solver.Objective().Value()))
 for i in range(N):
     print('[', end='', sep='')
     for j in range(N):
         print(' %.d' % (x[i][j].solution_value()), sep=' ', end=' ')
         if x[i][j].solution_value() != 0 and i != N - 1:  # Se for a última linha, a gente ignora o valor
-            solution_array.append([(
-                i, j, np.minimum(clients_array[i], servers_array[j])),  # Posições de origem e destino e Valor máximo de
+            solution_array.append([
+                i, j, np.minimum(clients_array[i], servers_array[j]),  # Posições de origem e destino e Valor máximo de
                 # download/upload do nó
                 x[i][j].solution_value()  # solution value
             ])
     print("]", sep='', end='\n')
 
 # DEBUG
-# print(solution_array)
+print("A matriz abaixo mostra os resultados na seguinte ordem para cada item: \n "
+      "[nó_cliente, nó_destino, valor_max_de_taxa_de_transfe_do_no, solution_value]")
+print(np.array(solution_array).astype(int))
 
 #
 #
@@ -180,6 +212,11 @@ flow_cost_matrix = []
 dataSetNSFNet = faux.load_random_matrices_from_files("nsfnet")
 dataSetGEANT2 = faux.load_random_matrices_from_files("geant2")
 
+# Vamos guardar os valores de cada dataset em vetores, a fim de organizá-los em arquivos para visualizar
+# melhor os resultados
+results_array_nsfnet = []
+results_array_geant2 = []
+
 # Como temos 5 nós clientes e isso é fixo, podemos fazer um loop ainda mais interno que vasculha todos os
 # nós de origem e destino
 for z in range(0, 2):  # Duas topologias diferentes
@@ -189,13 +226,13 @@ for z in range(0, 2):  # Duas topologias diferentes
         dataset = np.copy(dataSetGEANT2)
     for k in range(0, 3):  # Três matrizes diferentes
         print("--------------------------------------- Matriz utilizada: ---------------------------------------------")
-        print("datasets/nsfnet/connect_matrix_nsfnet_%d.txt" % k) if z == 0 else \
-            print("datasets/geant2/connect_matrix_geant2_%d.txt" % k)
+        print("datasets/nsfnet/connect_matrix_%d_nsfnet.txt" % k) if z == 0 else \
+            print("datasets/geant2/connect_matrix_%d_geant2.txt" % k)
         for t in range(5):  # Para 5 clientes diferentes
             solver = pywraplp.Solver('problema de maximização', pywraplp.Solver.GLOP_LINEAR_PROGRAMMING)
             # Parâmetros
             # Nó de origem (Source node) e Nó de destino (Target node)
-            source_node, target_node, max_value = solution_array[t][0]
+            source_node, target_node, max_value, _ = solution_array[t]
             # Debug
             print("----------------------------------------------- Parâmetros------------------------------------------"
                   "\n# Nó de origem (Source node) e Nó de destino (Target node)")
@@ -204,15 +241,14 @@ for z in range(0, 2):  # Duas topologias diferentes
             print("# target_node: ", target_node)
 
             if z == 0:
-                source_node = nsfnet.source_dict[source_node]
-                target_node = nsfnet.target_dict[target_node]
+                source_node_map = nsfnet.source_dict[source_node]
+                target_node_map = nsfnet.target_dict[target_node]
             else:
-                source_node = geant2.source_dict[source_node]
-                target_node = geant2.target_dict[target_node]
+                source_node_map = geant2.source_dict[source_node]
+                target_node_map = geant2.target_dict[target_node]
             # Debug
-            print("nó de origem no grafo: ", source_node)
-            print("nó de destino no grafo: ", target_node)
-
+            print("nó de origem no grafo: ", source_node_map)
+            print("nó de destino no grafo: ", target_node_map)
 
             flow_cost_matrix = np.copy(dataset[k])
             print(flow_cost_matrix)
@@ -271,14 +307,17 @@ for z in range(0, 2):  # Duas topologias diferentes
 
             solver.Solve()
 
-            # Vamos guardar os valores de cada dataset em vetores, a fim de organizá-los em arquivos para visualizar
-            # melhor os resultados
-            vetor_resultados_nsfnet = []
-            vetor_resultados_geant2 = []
-
             # Para cada dataset, temos a matriz k e o t respectivo com seus (i,j)
-            # vetor_resultados_nsfnet[k][t] =
-
+            if z == 0:
+                results_array_nsfnet.append(
+                    [k, source_node, target_node, source_node_map, target_node_map,
+                     solver.Objective().Value(), max_value]
+                )
+            else:
+                results_array_geant2.append(
+                    [k, source_node, target_node, source_node_map, target_node_map,
+                     solver.Objective().Value(), max_value]
+                )
 
             # Print da solução:
             print("----------------------------------Resultado-----------------------------------------")
@@ -292,3 +331,6 @@ for z in range(0, 2):  # Duas topologias diferentes
                             print('X[%d,%d]=%d de MAX_CAP: %.2f' % (i, j, x_part2[i][j].solution_value(), c[i][j]))
                         else:
                             print('X[%d,%d]=%d de MAX_CAP: %.2f' % (i, j, x_part2[i][j].solution_value(), c[i][j]))
+
+trata_resultados(results_array_nsfnet, results_array_geant2)
+

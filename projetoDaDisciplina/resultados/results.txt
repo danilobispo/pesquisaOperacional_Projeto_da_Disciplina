@@ -1,25 +1,25 @@
-"C:\Users\hal 9000\PycharmProjects\pythonProject\venv\Scripts\python.exe" "C:\Users\hal 9000\PycharmProjects\pythonProject\projetoDaDisciplina\projeto_da_disciplina.py"
-# Primeira parte do experimento: Problema de Associação 
-# Primeira parte: Handshake entre as duas partes 
-# Problema de associação entre nós clientes e nós servidores 
-# Unbalanced assignment problem, já que M != N 
-# Parametrização 
+"C:\Users\hal 9000\PycharmProjects\pythonProject\venv\Scripts\python.exe" "C:/Users/hal 9000/PycharmProjects/pythonProject/projetoDaDisciplina/projeto_da_disciplina.py"
+# Primeira parte do experimento: Problema de Associação
+# Primeira parte: Handshake entre as duas partes
+# Problema de associação entre nós clientes e nós servidores
+# Unbalanced assignment problem, já que M != N
+# Parametrização
 M = 5 ; N = 6
 Vetor de nós clientes:  [14 10  1  7 15]
 Vetor de nós servidores:  [ 1 14 17  3  3 17]
-Matriz de custo entre os nós de entrada e saída cij: 
+Matriz de custo entre os nós de entrada e saída cij:
  [[  13    0    3   11   11    3]
  [   9    4    7    7    7    7]
  [   0   13   16    2    2   16]
  [   6    7   10    4    4   10]
  [  14    1    2   12   12    2]
  [9999 9999 9999 9999 9999 9999]]
-# Variáveis de decisão: 
+# Variáveis de decisão:
 # Variável com o tamanho NxN da matriz xij
-# Constraints 
+# Constraints
 # Cada cliente terá um servidor dentre os N.
 # Cada servidor terá 0 ou 1 cliente dentre os M
-# Objective function: 
+# Objective function:
 # É uma função de minimização, onde queremos o menor custo (menor diferença entre nós de origem e destino)
 # Ou seja, minimização de xij*cij para i e j pertencentes a M e N
 ----------------------------------Resultado-----------------------------------------
@@ -35,7 +35,7 @@ Valor objetivo = 13
 
 # Segunda parte: Problema de maximização
 # Com os nos de entrada e saida definidos, podemos definir os constraints para cada caminho gerado
-# Como prometido, as matrizes aleatórias geradas no passo anterior vão ser usadas.
+# As matrizes aleatórias geradas no passo anterior vão ser usadas.
 # Serão usados dois grafos de topologias extraídas de https://knowledgedefinednetworking.org/
 # São eles: NSFNet e GEANT2
 # Vamos criar 3 matrizes aleatórias a partir da matriz de conectividade (não-direcionada) atribuindo custos
@@ -43,7 +43,7 @@ Valor objetivo = 13
 # Em seguida, os nós de source e target serão mapeados por dicionários inventados nas variáveis
 
 --------------------------------------- Matriz utilizada: ---------------------------------------------
-datasets/nsfnet/connect_matrix_nsfnet_0.txt
+datasets/nsfnet/connect_matrix_0_nsfnet.txt
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  14
@@ -67,32 +67,29 @@ nó de destino no grafo:  11
  [0. 0. 0. 0. 0. 4. 0. 0. 0. 0. 2. 0. 0. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 6.0
-X[0,1]=3 de MAX_CAP: 4.00
+Valor objetivo = 7.0
+X[0,1]=4 de MAX_CAP: 4.00
 X[0,2]=4 de MAX_CAP: 4.00
-X[0,3]=2 de MAX_CAP: 2.00
-X[1,0]=3 de MAX_CAP: 3.00
-X[1,7]=2 de MAX_CAP: 2.00
+X[0,3]=1 de MAX_CAP: 2.00
+X[1,0]=7 de MAX_CAP: -1.00
 X[2,1]=2 de MAX_CAP: 2.00
 X[2,5]=2 de MAX_CAP: 2.00
-X[3,4]=1 de MAX_CAP: 1.00
-X[3,8]=2 de MAX_CAP: 2.00
+X[3,0]=2 de MAX_CAP: 2.00
 X[4,3]=1 de MAX_CAP: 1.00
-X[4,5]=1 de MAX_CAP: 1.00
 X[5,12]=2 de MAX_CAP: 2.00
-X[5,13]=1 de MAX_CAP: 2.00
 X[6,4]=1 de MAX_CAP: 1.00
 X[6,7]=1 de MAX_CAP: 1.00
+X[7,1]=1 de MAX_CAP: 1.00
 X[7,6]=2 de MAX_CAP: 3.00
 X[7,10]=1 de MAX_CAP: 1.00
-X[8,9]=1 de MAX_CAP: 4.00
-X[8,11]=2 de MAX_CAP: 2.00
+X[8,11]=1 de MAX_CAP: 2.00
 X[9,8]=1 de MAX_CAP: 1.00
-X[9,10]=3 de MAX_CAP: 3.00
+X[9,10]=2 de MAX_CAP: 3.00
+X[10,7]=3 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
-X[10,11]=2 de MAX_CAP: 3.00
-X[10,13]=1 de MAX_CAP: 4.00
-X[11,0]=6 de MAX_CAP: -1.00
+X[10,11]=1 de MAX_CAP: 3.00
+X[10,13]=2 de MAX_CAP: 4.00
+X[11,10]=4 de MAX_CAP: 4.00
 X[11,12]=1 de MAX_CAP: 4.00
 X[12,11]=3 de MAX_CAP: 3.00
 X[13,10]=2 de MAX_CAP: 2.00
@@ -127,24 +124,27 @@ X[1,7]=2 de MAX_CAP: 2.00
 X[2,1]=2 de MAX_CAP: 2.00
 X[2,5]=2 de MAX_CAP: 2.00
 X[3,0]=2 de MAX_CAP: 2.00
+X[3,4]=1 de MAX_CAP: 1.00
+X[3,8]=2 de MAX_CAP: 2.00
+X[4,1]=3 de MAX_CAP: -1.00
 X[4,3]=1 de MAX_CAP: 1.00
+X[5,4]=2 de MAX_CAP: 2.00
 X[5,12]=2 de MAX_CAP: 2.00
+X[5,13]=2 de MAX_CAP: 2.00
 X[6,4]=1 de MAX_CAP: 1.00
 X[6,7]=1 de MAX_CAP: 1.00
-X[7,1]=3 de MAX_CAP: -1.00
 X[7,6]=2 de MAX_CAP: 3.00
 X[7,10]=1 de MAX_CAP: 1.00
-X[8,11]=1 de MAX_CAP: 2.00
+X[8,3]=3 de MAX_CAP: 4.00
 X[9,8]=1 de MAX_CAP: 1.00
 X[9,10]=2 de MAX_CAP: 3.00
-X[10,7]=3 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
-X[10,11]=1 de MAX_CAP: 3.00
+X[10,11]=2 de MAX_CAP: 3.00
 X[10,13]=2 de MAX_CAP: 4.00
 X[11,10]=4 de MAX_CAP: 4.00
 X[11,12]=1 de MAX_CAP: 4.00
 X[12,11]=3 de MAX_CAP: 3.00
-X[13,10]=2 de MAX_CAP: 2.00
+X[13,5]=4 de MAX_CAP: 4.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  1
@@ -169,11 +169,10 @@ nó de destino no grafo:  10
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 1.0
-X[0,1]=2 de MAX_CAP: 4.00
-X[0,2]=3 de MAX_CAP: 4.00
-X[1,0]=3 de MAX_CAP: 3.00
+X[0,1]=1 de MAX_CAP: 4.00
+X[0,2]=1 de MAX_CAP: -1.00
+X[1,2]=1 de MAX_CAP: 3.00
 X[1,7]=1 de MAX_CAP: 2.00
-X[2,1]=2 de MAX_CAP: 2.00
 X[2,5]=2 de MAX_CAP: 2.00
 X[3,0]=2 de MAX_CAP: 2.00
 X[3,8]=2 de MAX_CAP: 2.00
@@ -181,11 +180,12 @@ X[4,3]=1 de MAX_CAP: 1.00
 X[5,12]=2 de MAX_CAP: 2.00
 X[6,4]=1 de MAX_CAP: 1.00
 X[6,7]=1 de MAX_CAP: 1.00
+X[7,1]=1 de MAX_CAP: 1.00
 X[7,6]=2 de MAX_CAP: 3.00
 X[8,3]=3 de MAX_CAP: 4.00
 X[9,8]=1 de MAX_CAP: 1.00
 X[9,10]=2 de MAX_CAP: 3.00
-X[10,2]=1 de MAX_CAP: -1.00
+X[10,7]=1 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
 X[10,11]=2 de MAX_CAP: 3.00
 X[10,13]=2 de MAX_CAP: 4.00
@@ -216,32 +216,30 @@ nó de destino no grafo:  12
  [0. 0. 0. 0. 0. 4. 0. 0. 0. 0. 2. 0. 0. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 3.0
-X[0,1]=1 de MAX_CAP: 4.00
+Valor objetivo = 0.0
 X[0,2]=4 de MAX_CAP: 4.00
 X[1,0]=3 de MAX_CAP: 3.00
-X[1,7]=1 de MAX_CAP: 2.00
 X[2,1]=2 de MAX_CAP: 2.00
 X[2,5]=2 de MAX_CAP: 2.00
-X[3,0]=2 de MAX_CAP: 2.00
-X[3,8]=2 de MAX_CAP: 2.00
-X[4,3]=1 de MAX_CAP: 1.00
+X[3,0]=1 de MAX_CAP: 2.00
+X[4,5]=1 de MAX_CAP: 1.00
 X[5,12]=2 de MAX_CAP: 2.00
+X[5,13]=1 de MAX_CAP: 2.00
 X[6,4]=1 de MAX_CAP: 1.00
 X[6,7]=1 de MAX_CAP: 1.00
 X[7,1]=1 de MAX_CAP: 1.00
 X[7,6]=2 de MAX_CAP: 3.00
-X[8,9]=1 de MAX_CAP: 4.00
-X[8,11]=2 de MAX_CAP: 2.00
+X[7,10]=1 de MAX_CAP: 1.00
+X[8,3]=1 de MAX_CAP: 4.00
 X[9,8]=1 de MAX_CAP: 1.00
-X[9,10]=3 de MAX_CAP: 3.00
-X[10,7]=1 de MAX_CAP: 4.00
+X[9,10]=2 de MAX_CAP: 3.00
+X[10,7]=3 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
-X[10,11]=3 de MAX_CAP: 3.00
-X[10,13]=2 de MAX_CAP: 4.00
+X[10,11]=2 de MAX_CAP: 3.00
+X[10,13]=1 de MAX_CAP: 4.00
 X[11,10]=4 de MAX_CAP: 4.00
 X[11,12]=1 de MAX_CAP: 4.00
-X[12,3]=3 de MAX_CAP: -1.00
+X[12,11]=3 de MAX_CAP: 3.00
 X[13,10]=2 de MAX_CAP: 2.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
@@ -266,36 +264,36 @@ nó de destino no grafo:  13
  [0. 0. 0. 0. 0. 4. 0. 0. 0. 0. 2. 0. 0. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 6.0
-X[0,1]=3 de MAX_CAP: 4.00
-X[0,2]=2 de MAX_CAP: 4.00
-X[0,3]=2 de MAX_CAP: 2.00
+Valor objetivo = 3.0
+X[0,1]=1 de MAX_CAP: 4.00
+X[0,2]=4 de MAX_CAP: 4.00
 X[1,0]=3 de MAX_CAP: 3.00
-X[1,7]=2 de MAX_CAP: 2.00
-X[2,0]=2 de MAX_CAP: 2.00
+X[1,7]=1 de MAX_CAP: 2.00
 X[2,1]=2 de MAX_CAP: 2.00
-X[2,5]=1 de MAX_CAP: 2.00
+X[2,5]=2 de MAX_CAP: 2.00
 X[3,0]=2 de MAX_CAP: 2.00
-X[3,8]=1 de MAX_CAP: 2.00
+X[3,8]=2 de MAX_CAP: 2.00
 X[4,3]=1 de MAX_CAP: 1.00
-X[5,2]=3 de MAX_CAP: 3.00
+X[4,5]=1 de MAX_CAP: 1.00
+X[4,6]=1 de MAX_CAP: 1.00
+X[5,4]=3 de MAX_CAP: -1.00
 X[5,12]=2 de MAX_CAP: 2.00
 X[5,13]=2 de MAX_CAP: 2.00
-X[6,4]=1 de MAX_CAP: 1.00
 X[6,7]=1 de MAX_CAP: 1.00
-X[7,6]=2 de MAX_CAP: 3.00
+X[7,1]=1 de MAX_CAP: 1.00
 X[7,10]=1 de MAX_CAP: 1.00
-X[8,11]=2 de MAX_CAP: 2.00
+X[8,3]=3 de MAX_CAP: 4.00
 X[9,8]=1 de MAX_CAP: 1.00
 X[9,10]=2 de MAX_CAP: 3.00
 X[10,9]=3 de MAX_CAP: 3.00
-X[10,13]=4 de MAX_CAP: 4.00
+X[10,11]=2 de MAX_CAP: 3.00
+X[10,13]=2 de MAX_CAP: 4.00
 X[11,10]=4 de MAX_CAP: 4.00
 X[11,12]=1 de MAX_CAP: 4.00
 X[12,11]=3 de MAX_CAP: 3.00
-X[13,5]=6 de MAX_CAP: -1.00
+X[13,5]=4 de MAX_CAP: 4.00
 --------------------------------------- Matriz utilizada: ---------------------------------------------
-datasets/nsfnet/connect_matrix_nsfnet_1.txt
+datasets/nsfnet/connect_matrix_1_nsfnet.txt
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  14
@@ -320,26 +318,29 @@ nó de destino no grafo:  11
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 6.0
+X[0,1]=2 de MAX_CAP: 2.00
 X[0,2]=3 de MAX_CAP: 3.00
-X[0,3]=3 de MAX_CAP: 3.00
-X[1,7]=1 de MAX_CAP: 1.00
+X[0,3]=1 de MAX_CAP: 3.00
+X[1,0]=6 de MAX_CAP: -1.00
 X[2,1]=1 de MAX_CAP: 1.00
 X[2,5]=2 de MAX_CAP: 2.00
-X[3,4]=1 de MAX_CAP: 2.00
-X[3,8]=3 de MAX_CAP: 3.00
+X[3,8]=2 de MAX_CAP: 3.00
 X[4,3]=1 de MAX_CAP: 1.00
-X[4,5]=1 de MAX_CAP: 3.00
 X[4,6]=1 de MAX_CAP: 1.00
 X[5,4]=2 de MAX_CAP: 2.00
 X[5,12]=1 de MAX_CAP: 2.00
+X[5,13]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
-X[7,10]=2 de MAX_CAP: 2.00
-X[8,11]=3 de MAX_CAP: 3.00
+X[7,1]=3 de MAX_CAP: 3.00
+X[7,10]=1 de MAX_CAP: 2.00
+X[8,11]=2 de MAX_CAP: 3.00
 X[9,10]=1 de MAX_CAP: 1.00
+X[10,7]=3 de MAX_CAP: 3.00
 X[10,9]=1 de MAX_CAP: 1.00
-X[10,11]=2 de MAX_CAP: 4.00
-X[11,0]=6 de MAX_CAP: -1.00
+X[10,13]=1 de MAX_CAP: 2.00
+X[11,10]=3 de MAX_CAP: 3.00
 X[12,11]=1 de MAX_CAP: 1.00
+X[13,5]=3 de MAX_CAP: 4.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  3
@@ -373,13 +374,14 @@ X[2,1]=1 de MAX_CAP: 1.00
 X[2,5]=2 de MAX_CAP: 2.00
 X[3,0]=2 de MAX_CAP: 2.00
 X[3,8]=1 de MAX_CAP: 3.00
+X[4,1]=3 de MAX_CAP: -1.00
 X[4,3]=1 de MAX_CAP: 1.00
 X[4,6]=1 de MAX_CAP: 1.00
 X[5,4]=2 de MAX_CAP: 2.00
 X[5,12]=1 de MAX_CAP: 2.00
 X[5,13]=2 de MAX_CAP: 2.00
-X[6,7]=1 de MAX_CAP: 1.00
-X[7,1]=3 de MAX_CAP: -1.00
+X[6,4]=3 de MAX_CAP: 3.00
+X[7,6]=2 de MAX_CAP: 2.00
 X[7,10]=2 de MAX_CAP: 2.00
 X[8,9]=3 de MAX_CAP: 3.00
 X[8,11]=2 de MAX_CAP: 3.00
@@ -414,29 +416,29 @@ nó de destino no grafo:  10
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 1.0
-X[0,2]=2 de MAX_CAP: 3.00
+X[0,2]=1 de MAX_CAP: -1.00
+X[0,3]=1 de MAX_CAP: 3.00
 X[1,7]=1 de MAX_CAP: 1.00
 X[2,1]=1 de MAX_CAP: 1.00
-X[2,5]=2 de MAX_CAP: 2.00
 X[3,0]=2 de MAX_CAP: 2.00
-X[3,8]=2 de MAX_CAP: 3.00
+X[3,8]=3 de MAX_CAP: 3.00
 X[4,3]=1 de MAX_CAP: 1.00
 X[4,6]=1 de MAX_CAP: 1.00
 X[5,4]=2 de MAX_CAP: 2.00
-X[5,12]=1 de MAX_CAP: 2.00
 X[5,13]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
 X[7,10]=2 de MAX_CAP: 2.00
 X[8,3]=3 de MAX_CAP: 3.00
 X[8,9]=3 de MAX_CAP: 3.00
+X[8,11]=1 de MAX_CAP: 3.00
 X[9,8]=4 de MAX_CAP: 4.00
-X[10,2]=1 de MAX_CAP: -1.00
 X[10,9]=1 de MAX_CAP: 1.00
 X[10,11]=2 de MAX_CAP: 4.00
-X[10,13]=1 de MAX_CAP: 2.00
+X[10,13]=2 de MAX_CAP: 2.00
 X[11,10]=3 de MAX_CAP: 3.00
+X[11,12]=1 de MAX_CAP: 2.00
 X[12,11]=1 de MAX_CAP: 1.00
-X[13,5]=3 de MAX_CAP: 4.00
+X[13,5]=4 de MAX_CAP: 4.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  3
@@ -460,31 +462,27 @@ nó de destino no grafo:  12
  [0. 0. 0. 0. 0. 4. 0. 0. 0. 0. 3. 0. 0. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 3.0
+Valor objetivo = 0.0
 X[0,2]=2 de MAX_CAP: 3.00
 X[1,7]=1 de MAX_CAP: 1.00
 X[2,1]=1 de MAX_CAP: 1.00
 X[2,5]=1 de MAX_CAP: 2.00
 X[3,0]=2 de MAX_CAP: 2.00
-X[3,4]=1 de MAX_CAP: 2.00
-X[3,8]=1 de MAX_CAP: 3.00
 X[4,3]=1 de MAX_CAP: 1.00
-X[4,5]=1 de MAX_CAP: 3.00
 X[4,6]=1 de MAX_CAP: 1.00
 X[5,4]=2 de MAX_CAP: 2.00
-X[5,12]=2 de MAX_CAP: 2.00
+X[5,12]=1 de MAX_CAP: 2.00
 X[5,13]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
 X[7,10]=2 de MAX_CAP: 2.00
+X[8,3]=1 de MAX_CAP: 3.00
 X[8,9]=3 de MAX_CAP: 3.00
-X[8,11]=2 de MAX_CAP: 3.00
 X[9,8]=4 de MAX_CAP: 4.00
 X[10,9]=1 de MAX_CAP: 1.00
 X[10,11]=2 de MAX_CAP: 4.00
 X[10,13]=2 de MAX_CAP: 2.00
 X[11,10]=3 de MAX_CAP: 3.00
-X[11,12]=1 de MAX_CAP: 2.00
-X[12,3]=3 de MAX_CAP: -1.00
+X[12,11]=1 de MAX_CAP: 1.00
 X[13,5]=4 de MAX_CAP: 4.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
@@ -509,7 +507,7 @@ nó de destino no grafo:  13
  [0. 0. 0. 0. 0. 4. 0. 0. 0. 0. 3. 0. 0. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 4.0
+Valor objetivo = 5.0
 X[0,2]=2 de MAX_CAP: 3.00
 X[1,7]=1 de MAX_CAP: 1.00
 X[2,1]=1 de MAX_CAP: 1.00
@@ -517,8 +515,9 @@ X[2,5]=1 de MAX_CAP: 2.00
 X[3,0]=2 de MAX_CAP: 2.00
 X[3,8]=2 de MAX_CAP: 3.00
 X[4,3]=1 de MAX_CAP: 1.00
+X[4,5]=3 de MAX_CAP: 3.00
 X[4,6]=1 de MAX_CAP: 1.00
-X[5,4]=2 de MAX_CAP: 2.00
+X[5,4]=5 de MAX_CAP: -1.00
 X[5,12]=1 de MAX_CAP: 2.00
 X[5,13]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
@@ -531,9 +530,9 @@ X[10,11]=2 de MAX_CAP: 4.00
 X[10,13]=2 de MAX_CAP: 2.00
 X[11,10]=3 de MAX_CAP: 3.00
 X[12,11]=1 de MAX_CAP: 1.00
-X[13,5]=4 de MAX_CAP: -1.00
+X[13,5]=4 de MAX_CAP: 4.00
 --------------------------------------- Matriz utilizada: ---------------------------------------------
-datasets/nsfnet/connect_matrix_nsfnet_2.txt
+datasets/nsfnet/connect_matrix_2_nsfnet.txt
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  14
@@ -557,31 +556,32 @@ nó de destino no grafo:  11
  [0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 2. 0. 0. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 5.0
+Valor objetivo = 4.0
 X[0,1]=1 de MAX_CAP: 1.00
-X[0,2]=3 de MAX_CAP: 3.00
+X[0,2]=2 de MAX_CAP: 3.00
 X[0,3]=2 de MAX_CAP: 2.00
-X[1,0]=1 de MAX_CAP: 1.00
-X[1,7]=2 de MAX_CAP: 2.00
+X[1,0]=4 de MAX_CAP: -1.00
+X[2,0]=1 de MAX_CAP: 1.00
 X[2,1]=2 de MAX_CAP: 2.00
-X[2,5]=1 de MAX_CAP: 2.00
 X[3,4]=2 de MAX_CAP: 2.00
-X[3,8]=2 de MAX_CAP: 3.00
-X[4,3]=2 de MAX_CAP: 2.00
-X[4,5]=2 de MAX_CAP: 2.00
+X[3,8]=1 de MAX_CAP: 3.00
+X[4,5]=1 de MAX_CAP: 2.00
 X[4,6]=3 de MAX_CAP: 4.00
-X[5,4]=3 de MAX_CAP: 3.00
+X[5,2]=1 de MAX_CAP: 1.00
 X[5,12]=1 de MAX_CAP: 1.00
 X[6,4]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
-X[7,10]=3 de MAX_CAP: 4.00
-X[8,11]=3 de MAX_CAP: 3.00
+X[7,1]=1 de MAX_CAP: 1.00
+X[7,10]=4 de MAX_CAP: 4.00
+X[8,3]=1 de MAX_CAP: 1.00
+X[8,11]=1 de MAX_CAP: 3.00
 X[9,8]=1 de MAX_CAP: 1.00
 X[9,10]=1 de MAX_CAP: 4.00
+X[10,7]=4 de MAX_CAP: 4.00
 X[10,9]=2 de MAX_CAP: 2.00
 X[10,11]=1 de MAX_CAP: 1.00
 X[10,13]=1 de MAX_CAP: 1.00
-X[11,0]=5 de MAX_CAP: -1.00
+X[11,10]=3 de MAX_CAP: 4.00
 X[11,12]=1 de MAX_CAP: 4.00
 X[12,11]=2 de MAX_CAP: 2.00
 X[13,5]=1 de MAX_CAP: 1.00
@@ -611,17 +611,19 @@ Solucao:
 Valor objetivo = 3.0
 X[0,3]=2 de MAX_CAP: 2.00
 X[1,0]=1 de MAX_CAP: 1.00
-X[1,7]=2 de MAX_CAP: 2.00
+X[1,2]=1 de MAX_CAP: 1.00
+X[1,7]=1 de MAX_CAP: 2.00
 X[2,0]=1 de MAX_CAP: 1.00
+X[2,5]=1 de MAX_CAP: 2.00
 X[3,4]=2 de MAX_CAP: 2.00
 X[3,8]=1 de MAX_CAP: 3.00
-X[4,5]=1 de MAX_CAP: 2.00
-X[4,6]=3 de MAX_CAP: 4.00
+X[4,1]=3 de MAX_CAP: -1.00
+X[4,6]=1 de MAX_CAP: 4.00
 X[5,2]=1 de MAX_CAP: 1.00
 X[5,12]=1 de MAX_CAP: 1.00
 X[6,4]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
-X[7,1]=3 de MAX_CAP: -1.00
+X[7,6]=2 de MAX_CAP: 2.00
 X[7,10]=4 de MAX_CAP: 4.00
 X[8,3]=1 de MAX_CAP: 1.00
 X[8,11]=1 de MAX_CAP: 3.00
@@ -659,27 +661,29 @@ nó de destino no grafo:  10
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 1.0
+X[0,1]=1 de MAX_CAP: 1.00
+X[0,2]=1 de MAX_CAP: -1.00
 X[0,3]=2 de MAX_CAP: 2.00
 X[1,0]=1 de MAX_CAP: 1.00
 X[1,2]=1 de MAX_CAP: 1.00
-X[1,7]=1 de MAX_CAP: 2.00
-X[2,0]=1 de MAX_CAP: 1.00
-X[2,1]=2 de MAX_CAP: 2.00
-X[3,4]=2 de MAX_CAP: 2.00
+X[2,5]=2 de MAX_CAP: 2.00
+X[3,0]=3 de MAX_CAP: 3.00
+X[3,4]=1 de MAX_CAP: 2.00
 X[3,8]=1 de MAX_CAP: 3.00
+X[4,3]=2 de MAX_CAP: 2.00
 X[4,5]=1 de MAX_CAP: 2.00
 X[4,6]=3 de MAX_CAP: 4.00
-X[5,2]=1 de MAX_CAP: 1.00
+X[5,4]=3 de MAX_CAP: 3.00
 X[5,12]=1 de MAX_CAP: 1.00
 X[6,4]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
 X[7,1]=1 de MAX_CAP: 1.00
-X[7,10]=1 de MAX_CAP: 4.00
+X[7,10]=4 de MAX_CAP: 4.00
 X[8,3]=1 de MAX_CAP: 1.00
 X[8,11]=1 de MAX_CAP: 3.00
 X[9,8]=1 de MAX_CAP: 1.00
 X[9,10]=1 de MAX_CAP: 4.00
-X[10,2]=1 de MAX_CAP: -1.00
+X[10,7]=4 de MAX_CAP: 4.00
 X[10,9]=2 de MAX_CAP: 2.00
 X[10,11]=1 de MAX_CAP: 1.00
 X[10,13]=1 de MAX_CAP: 1.00
@@ -710,12 +714,11 @@ nó de destino no grafo:  12
  [0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 2. 0. 0. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 3.0
+Valor objetivo = 0.0
 X[0,3]=2 de MAX_CAP: 2.00
 X[1,0]=1 de MAX_CAP: 1.00
 X[2,0]=1 de MAX_CAP: 1.00
 X[3,4]=2 de MAX_CAP: 2.00
-X[3,8]=3 de MAX_CAP: 3.00
 X[4,5]=1 de MAX_CAP: 2.00
 X[4,6]=3 de MAX_CAP: 4.00
 X[5,2]=1 de MAX_CAP: 1.00
@@ -724,16 +727,16 @@ X[6,4]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
 X[7,1]=1 de MAX_CAP: 1.00
 X[7,10]=4 de MAX_CAP: 4.00
-X[8,9]=1 de MAX_CAP: 3.00
-X[8,11]=3 de MAX_CAP: 3.00
+X[8,11]=1 de MAX_CAP: 3.00
 X[9,8]=1 de MAX_CAP: 1.00
-X[9,10]=2 de MAX_CAP: 4.00
+X[9,10]=1 de MAX_CAP: 4.00
 X[10,7]=4 de MAX_CAP: 4.00
 X[10,9]=2 de MAX_CAP: 2.00
+X[10,11]=1 de MAX_CAP: 1.00
 X[10,13]=1 de MAX_CAP: 1.00
-X[11,10]=1 de MAX_CAP: 4.00
-X[11,12]=2 de MAX_CAP: 4.00
-X[12,3]=3 de MAX_CAP: -1.00
+X[11,10]=3 de MAX_CAP: 4.00
+X[11,12]=1 de MAX_CAP: 4.00
+X[12,11]=2 de MAX_CAP: 2.00
 X[13,5]=1 de MAX_CAP: 1.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
@@ -759,22 +762,25 @@ nó de destino no grafo:  13
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 5.0
+X[0,1]=1 de MAX_CAP: 1.00
+X[0,2]=2 de MAX_CAP: 3.00
 X[0,3]=2 de MAX_CAP: 2.00
 X[1,0]=1 de MAX_CAP: 1.00
+X[1,2]=1 de MAX_CAP: 1.00
 X[2,0]=1 de MAX_CAP: 1.00
-X[3,4]=2 de MAX_CAP: 2.00
-X[3,8]=1 de MAX_CAP: 3.00
-X[4,5]=1 de MAX_CAP: 2.00
+X[2,5]=2 de MAX_CAP: 2.00
+X[3,0]=3 de MAX_CAP: 3.00
+X[3,8]=2 de MAX_CAP: 3.00
+X[4,3]=2 de MAX_CAP: 2.00
+X[4,5]=2 de MAX_CAP: 2.00
 X[4,6]=3 de MAX_CAP: 4.00
-X[5,2]=1 de MAX_CAP: 1.00
-X[5,12]=1 de MAX_CAP: 1.00
-X[5,13]=4 de MAX_CAP: 4.00
+X[5,4]=5 de MAX_CAP: -1.00
 X[6,4]=2 de MAX_CAP: 2.00
 X[6,7]=1 de MAX_CAP: 1.00
 X[7,1]=1 de MAX_CAP: 1.00
 X[7,10]=4 de MAX_CAP: 4.00
 X[8,3]=1 de MAX_CAP: 1.00
-X[8,11]=1 de MAX_CAP: 3.00
+X[8,11]=2 de MAX_CAP: 3.00
 X[9,8]=1 de MAX_CAP: 1.00
 X[9,10]=1 de MAX_CAP: 4.00
 X[10,7]=4 de MAX_CAP: 4.00
@@ -782,11 +788,11 @@ X[10,9]=2 de MAX_CAP: 2.00
 X[10,11]=1 de MAX_CAP: 1.00
 X[10,13]=1 de MAX_CAP: 1.00
 X[11,10]=3 de MAX_CAP: 4.00
-X[11,12]=1 de MAX_CAP: 4.00
+X[11,12]=2 de MAX_CAP: 4.00
 X[12,11]=2 de MAX_CAP: 2.00
-X[13,5]=5 de MAX_CAP: -1.00
+X[13,5]=1 de MAX_CAP: 1.00
 --------------------------------------- Matriz utilizada: ---------------------------------------------
-datasets/geant2/connect_matrix_geant2_0.txt
+datasets/geant2/connect_matrix_0_geant2.txt
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  14
@@ -820,54 +826,54 @@ nó de destino no grafo:  23
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 4. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 4.0
+Valor objetivo = 5.0
 X[0,1]=3 de MAX_CAP: 3.00
-X[0,2]=1 de MAX_CAP: 2.00
-X[1,3]=2 de MAX_CAP: 4.00
-X[1,6]=1 de MAX_CAP: 1.00
-X[1,9]=1 de MAX_CAP: 1.00
-X[2,3]=1 de MAX_CAP: 3.00
+X[0,2]=2 de MAX_CAP: 2.00
+X[1,0]=5 de MAX_CAP: -1.00
+X[2,3]=2 de MAX_CAP: 3.00
 X[2,4]=2 de MAX_CAP: 2.00
+X[3,1]=1 de MAX_CAP: 1.00
 X[3,2]=2 de MAX_CAP: 2.00
-X[3,5]=3 de MAX_CAP: 3.00
+X[3,5]=2 de MAX_CAP: 3.00
 X[3,6]=1 de MAX_CAP: 1.00
 X[4,7]=2 de MAX_CAP: 2.00
 X[5,3]=3 de MAX_CAP: 3.00
-X[5,8]=1 de MAX_CAP: 3.00
+X[6,3]=1 de MAX_CAP: 1.00
 X[6,8]=1 de MAX_CAP: 2.00
 X[6,9]=1 de MAX_CAP: 1.00
 X[7,11]=3 de MAX_CAP: 4.00
 X[8,5]=1 de MAX_CAP: 1.00
+X[8,6]=2 de MAX_CAP: 2.00
 X[8,7]=1 de MAX_CAP: 1.00
 X[8,11]=1 de MAX_CAP: 3.00
-X[8,12]=3 de MAX_CAP: 4.00
-X[8,17]=2 de MAX_CAP: 4.00
+X[8,12]=1 de MAX_CAP: 4.00
+X[8,17]=1 de MAX_CAP: 4.00
 X[9,1]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
-X[9,13]=1 de MAX_CAP: 1.00
 X[10,9]=1 de MAX_CAP: 4.00
 X[11,8]=4 de MAX_CAP: 4.00
 X[11,20]=1 de MAX_CAP: 3.00
-X[12,13]=3 de MAX_CAP: 4.00
+X[12,13]=1 de MAX_CAP: 4.00
 X[12,19]=2 de MAX_CAP: 3.00
 X[12,21]=2 de MAX_CAP: 2.00
 X[13,10]=1 de MAX_CAP: 1.00
-X[13,12]=3 de MAX_CAP: 3.00
 X[14,11]=1 de MAX_CAP: 1.00
 X[15,14]=1 de MAX_CAP: 4.00
 X[15,16]=2 de MAX_CAP: 3.00
 X[16,15]=3 de MAX_CAP: 3.00
 X[16,17]=3 de MAX_CAP: 4.00
 X[17,16]=4 de MAX_CAP: 4.00
-X[17,18]=1 de MAX_CAP: 3.00
+X[17,18]=3 de MAX_CAP: 3.00
 X[18,8]=1 de MAX_CAP: 1.00
-X[18,21]=4 de MAX_CAP: 4.00
-X[19,23]=2 de MAX_CAP: 2.00
+X[18,17]=3 de MAX_CAP: 3.00
+X[18,21]=3 de MAX_CAP: 4.00
+X[19,12]=3 de MAX_CAP: 3.00
 X[20,8]=1 de MAX_CAP: 1.00
 X[21,18]=4 de MAX_CAP: 4.00
 X[21,22]=2 de MAX_CAP: 3.00
-X[22,23]=2 de MAX_CAP: 2.00
-X[23,0]=4 de MAX_CAP: -1.00
+X[22,21]=1 de MAX_CAP: 1.00
+X[22,23]=1 de MAX_CAP: 2.00
+X[23,19]=1 de MAX_CAP: 1.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  3
@@ -910,22 +916,24 @@ X[1,6]=1 de MAX_CAP: 1.00
 X[2,0]=1 de MAX_CAP: 1.00
 X[2,4]=2 de MAX_CAP: 2.00
 X[3,2]=2 de MAX_CAP: 2.00
-X[3,5]=2 de MAX_CAP: 3.00
+X[3,5]=3 de MAX_CAP: 3.00
+X[3,6]=1 de MAX_CAP: 1.00
+X[4,1]=3 de MAX_CAP: -1.00
 X[4,7]=2 de MAX_CAP: 2.00
-X[5,8]=2 de MAX_CAP: 3.00
-X[6,3]=1 de MAX_CAP: 1.00
+X[5,3]=3 de MAX_CAP: 3.00
+X[5,8]=1 de MAX_CAP: 3.00
 X[6,8]=1 de MAX_CAP: 2.00
 X[6,9]=1 de MAX_CAP: 1.00
-X[7,11]=3 de MAX_CAP: 4.00
-X[8,6]=2 de MAX_CAP: 2.00
+X[7,4]=3 de MAX_CAP: 4.00
+X[7,11]=2 de MAX_CAP: 4.00
+X[8,5]=1 de MAX_CAP: 1.00
 X[8,7]=1 de MAX_CAP: 1.00
-X[8,11]=1 de MAX_CAP: 3.00
 X[8,12]=1 de MAX_CAP: 4.00
-X[8,17]=4 de MAX_CAP: 4.00
+X[8,17]=1 de MAX_CAP: 4.00
 X[9,1]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
 X[10,9]=1 de MAX_CAP: 4.00
-X[11,8]=4 de MAX_CAP: 4.00
+X[11,7]=2 de MAX_CAP: 2.00
 X[11,20]=1 de MAX_CAP: 3.00
 X[12,13]=1 de MAX_CAP: 4.00
 X[12,19]=2 de MAX_CAP: 3.00
@@ -938,8 +946,8 @@ X[16,15]=3 de MAX_CAP: 3.00
 X[16,17]=3 de MAX_CAP: 4.00
 X[17,16]=4 de MAX_CAP: 4.00
 X[17,18]=3 de MAX_CAP: 3.00
-X[18,1]=3 de MAX_CAP: -1.00
 X[18,8]=1 de MAX_CAP: 1.00
+X[18,17]=3 de MAX_CAP: 3.00
 X[18,21]=3 de MAX_CAP: 4.00
 X[19,12]=3 de MAX_CAP: 3.00
 X[20,8]=1 de MAX_CAP: 1.00
@@ -983,10 +991,10 @@ nó de destino no grafo:  19
 Solucao:
 Valor objetivo = 1.0
 X[0,1]=1 de MAX_CAP: 3.00
-X[1,3]=1 de MAX_CAP: 4.00
+X[0,2]=1 de MAX_CAP: -1.00
+X[1,0]=2 de MAX_CAP: 2.00
 X[1,6]=1 de MAX_CAP: 1.00
-X[1,9]=1 de MAX_CAP: 1.00
-X[2,0]=1 de MAX_CAP: 1.00
+X[2,3]=1 de MAX_CAP: 3.00
 X[2,4]=2 de MAX_CAP: 2.00
 X[3,1]=1 de MAX_CAP: 1.00
 X[3,2]=2 de MAX_CAP: 2.00
@@ -1005,15 +1013,13 @@ X[8,12]=1 de MAX_CAP: 4.00
 X[8,17]=1 de MAX_CAP: 4.00
 X[9,1]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
-X[9,13]=1 de MAX_CAP: 1.00
 X[10,9]=1 de MAX_CAP: 4.00
 X[11,8]=4 de MAX_CAP: 4.00
 X[11,20]=1 de MAX_CAP: 3.00
-X[12,13]=3 de MAX_CAP: 4.00
-X[12,19]=3 de MAX_CAP: 3.00
+X[12,13]=1 de MAX_CAP: 4.00
+X[12,19]=2 de MAX_CAP: 3.00
 X[12,21]=2 de MAX_CAP: 2.00
 X[13,10]=1 de MAX_CAP: 1.00
-X[13,12]=3 de MAX_CAP: 3.00
 X[14,11]=1 de MAX_CAP: 1.00
 X[15,14]=1 de MAX_CAP: 4.00
 X[15,16]=2 de MAX_CAP: 3.00
@@ -1024,7 +1030,6 @@ X[17,18]=3 de MAX_CAP: 3.00
 X[18,8]=1 de MAX_CAP: 1.00
 X[18,17]=3 de MAX_CAP: 3.00
 X[18,21]=3 de MAX_CAP: 4.00
-X[19,2]=1 de MAX_CAP: -1.00
 X[19,12]=3 de MAX_CAP: 3.00
 X[20,8]=1 de MAX_CAP: 1.00
 X[21,18]=4 de MAX_CAP: 4.00
@@ -1065,29 +1070,24 @@ nó de destino no grafo:  21
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 4. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 3.0
-X[0,1]=1 de MAX_CAP: 3.00
+Valor objetivo = 0.0
+X[0,1]=2 de MAX_CAP: 3.00
+X[0,2]=1 de MAX_CAP: 2.00
+X[1,0]=2 de MAX_CAP: 2.00
 X[1,3]=2 de MAX_CAP: 4.00
-X[1,6]=1 de MAX_CAP: 1.00
 X[2,0]=1 de MAX_CAP: 1.00
-X[2,3]=2 de MAX_CAP: 3.00
 X[2,4]=2 de MAX_CAP: 2.00
 X[3,1]=1 de MAX_CAP: 1.00
 X[3,2]=2 de MAX_CAP: 2.00
-X[3,5]=3 de MAX_CAP: 3.00
-X[3,6]=1 de MAX_CAP: 1.00
-X[4,2]=3 de MAX_CAP: 4.00
 X[4,7]=2 de MAX_CAP: 2.00
-X[5,3]=3 de MAX_CAP: 3.00
-X[5,8]=1 de MAX_CAP: 3.00
-X[6,8]=1 de MAX_CAP: 2.00
+X[6,3]=1 de MAX_CAP: 1.00
 X[6,9]=1 de MAX_CAP: 1.00
 X[7,11]=3 de MAX_CAP: 4.00
-X[8,5]=1 de MAX_CAP: 1.00
+X[8,6]=2 de MAX_CAP: 2.00
 X[8,7]=1 de MAX_CAP: 1.00
 X[8,11]=1 de MAX_CAP: 3.00
 X[8,12]=1 de MAX_CAP: 4.00
-X[8,17]=4 de MAX_CAP: 4.00
+X[8,17]=1 de MAX_CAP: 4.00
 X[9,1]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
 X[10,9]=1 de MAX_CAP: 4.00
@@ -1105,10 +1105,11 @@ X[16,17]=3 de MAX_CAP: 4.00
 X[17,16]=4 de MAX_CAP: 4.00
 X[17,18]=3 de MAX_CAP: 3.00
 X[18,8]=1 de MAX_CAP: 1.00
-X[18,21]=2 de MAX_CAP: 4.00
+X[18,17]=3 de MAX_CAP: 3.00
+X[18,21]=3 de MAX_CAP: 4.00
 X[19,12]=3 de MAX_CAP: 3.00
 X[20,8]=1 de MAX_CAP: 1.00
-X[21,4]=3 de MAX_CAP: -1.00
+X[21,18]=4 de MAX_CAP: 4.00
 X[21,22]=2 de MAX_CAP: 3.00
 X[22,21]=1 de MAX_CAP: 1.00
 X[22,23]=1 de MAX_CAP: 2.00
@@ -1146,51 +1147,56 @@ nó de destino no grafo:  17
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 4. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 8.0
+Valor objetivo = 4.0
 X[0,1]=1 de MAX_CAP: 3.00
 X[1,3]=2 de MAX_CAP: 4.00
 X[1,6]=1 de MAX_CAP: 1.00
 X[2,0]=1 de MAX_CAP: 1.00
 X[2,3]=1 de MAX_CAP: 3.00
+X[2,4]=2 de MAX_CAP: 2.00
 X[3,1]=1 de MAX_CAP: 1.00
-X[3,2]=2 de MAX_CAP: 2.00
-X[3,5]=2 de MAX_CAP: 3.00
-X[3,6]=1 de MAX_CAP: 1.00
-X[5,3]=3 de MAX_CAP: 3.00
+X[3,5]=3 de MAX_CAP: 3.00
+X[4,2]=4 de MAX_CAP: 4.00
+X[4,7]=2 de MAX_CAP: 2.00
+X[5,4]=4 de MAX_CAP: -1.00
+X[6,3]=1 de MAX_CAP: 1.00
 X[6,8]=1 de MAX_CAP: 2.00
 X[6,9]=1 de MAX_CAP: 1.00
-X[7,8]=4 de MAX_CAP: 4.00
-X[7,11]=4 de MAX_CAP: 4.00
+X[7,11]=3 de MAX_CAP: 4.00
 X[8,5]=1 de MAX_CAP: 1.00
-X[8,11]=2 de MAX_CAP: 3.00
-X[8,12]=2 de MAX_CAP: 4.00
-X[8,17]=4 de MAX_CAP: 4.00
-X[8,18]=1 de MAX_CAP: 1.00
+X[8,6]=2 de MAX_CAP: 2.00
+X[8,7]=1 de MAX_CAP: 1.00
+X[8,11]=1 de MAX_CAP: 3.00
+X[8,12]=1 de MAX_CAP: 4.00
+X[8,17]=1 de MAX_CAP: 4.00
 X[9,1]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
 X[10,9]=1 de MAX_CAP: 4.00
 X[11,8]=4 de MAX_CAP: 4.00
-X[11,14]=1 de MAX_CAP: 2.00
 X[11,20]=1 de MAX_CAP: 3.00
 X[12,13]=1 de MAX_CAP: 4.00
-X[12,19]=3 de MAX_CAP: 3.00
+X[12,19]=2 de MAX_CAP: 3.00
 X[12,21]=2 de MAX_CAP: 2.00
 X[13,10]=1 de MAX_CAP: 1.00
-X[14,15]=1 de MAX_CAP: 1.00
-X[15,16]=1 de MAX_CAP: 3.00
-X[16,17]=1 de MAX_CAP: 4.00
-X[17,7]=8 de MAX_CAP: -1.00
+X[14,11]=1 de MAX_CAP: 1.00
+X[15,14]=1 de MAX_CAP: 4.00
+X[15,16]=2 de MAX_CAP: 3.00
+X[16,15]=3 de MAX_CAP: 3.00
+X[16,17]=3 de MAX_CAP: 4.00
+X[17,16]=4 de MAX_CAP: 4.00
+X[17,18]=3 de MAX_CAP: 3.00
+X[18,8]=1 de MAX_CAP: 1.00
 X[18,17]=3 de MAX_CAP: 3.00
-X[18,21]=2 de MAX_CAP: 4.00
+X[18,21]=3 de MAX_CAP: 4.00
 X[19,12]=3 de MAX_CAP: 3.00
-X[19,23]=1 de MAX_CAP: 2.00
 X[20,8]=1 de MAX_CAP: 1.00
 X[21,18]=4 de MAX_CAP: 4.00
-X[21,22]=1 de MAX_CAP: 3.00
+X[21,22]=2 de MAX_CAP: 3.00
 X[22,21]=1 de MAX_CAP: 1.00
+X[22,23]=1 de MAX_CAP: 2.00
 X[23,19]=1 de MAX_CAP: 1.00
 --------------------------------------- Matriz utilizada: ---------------------------------------------
-datasets/geant2/connect_matrix_geant2_1.txt
+datasets/geant2/connect_matrix_1_geant2.txt
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  14
@@ -1224,11 +1230,11 @@ nó de destino no grafo:  23
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 3. 0. 0. 2. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 2.0
-X[0,1]=1 de MAX_CAP: 4.00
+Valor objetivo = 5.0
+X[0,1]=4 de MAX_CAP: 4.00
 X[0,2]=1 de MAX_CAP: 1.00
+X[1,0]=5 de MAX_CAP: -1.00
 X[1,3]=1 de MAX_CAP: 1.00
-X[1,9]=2 de MAX_CAP: 2.00
 X[2,3]=2 de MAX_CAP: 3.00
 X[2,4]=3 de MAX_CAP: 4.00
 X[3,5]=3 de MAX_CAP: 4.00
@@ -1247,13 +1253,12 @@ X[8,12]=1 de MAX_CAP: 1.00
 X[8,18]=2 de MAX_CAP: 4.00
 X[8,20]=2 de MAX_CAP: 3.00
 X[9,10]=3 de MAX_CAP: 4.00
-X[9,12]=4 de MAX_CAP: 4.00
+X[9,12]=2 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
 X[11,7]=1 de MAX_CAP: 1.00
 X[11,14]=1 de MAX_CAP: 1.00
 X[11,20]=1 de MAX_CAP: 1.00
 X[12,13]=1 de MAX_CAP: 1.00
-X[12,19]=1 de MAX_CAP: 1.00
 X[12,21]=3 de MAX_CAP: 3.00
 X[13,9]=1 de MAX_CAP: 1.00
 X[14,11]=2 de MAX_CAP: 2.00
@@ -1267,12 +1272,13 @@ X[17,18]=2 de MAX_CAP: 2.00
 X[18,8]=2 de MAX_CAP: 2.00
 X[18,17]=4 de MAX_CAP: 4.00
 X[18,21]=2 de MAX_CAP: 3.00
-X[19,23]=1 de MAX_CAP: 3.00
+X[19,12]=1 de MAX_CAP: 1.00
+X[19,23]=2 de MAX_CAP: 3.00
 X[20,8]=3 de MAX_CAP: 3.00
 X[21,18]=4 de MAX_CAP: 4.00
 X[21,22]=1 de MAX_CAP: 2.00
 X[22,23]=1 de MAX_CAP: 1.00
-X[23,0]=2 de MAX_CAP: -1.00
+X[23,19]=3 de MAX_CAP: 3.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  3
@@ -1312,31 +1318,29 @@ X[0,2]=1 de MAX_CAP: 1.00
 X[1,0]=4 de MAX_CAP: 4.00
 X[1,3]=1 de MAX_CAP: 1.00
 X[1,6]=1 de MAX_CAP: 3.00
-X[1,9]=2 de MAX_CAP: 2.00
 X[2,3]=2 de MAX_CAP: 3.00
-X[2,4]=3 de MAX_CAP: 4.00
-X[3,5]=3 de MAX_CAP: 4.00
-X[3,6]=1 de MAX_CAP: 4.00
-X[4,2]=4 de MAX_CAP: 4.00
-X[5,8]=3 de MAX_CAP: 3.00
-X[6,1]=2 de MAX_CAP: 2.00
+X[2,4]=2 de MAX_CAP: 4.00
+X[3,2]=3 de MAX_CAP: 3.00
+X[3,5]=1 de MAX_CAP: 4.00
+X[4,1]=3 de MAX_CAP: -1.00
+X[5,8]=1 de MAX_CAP: 3.00
 X[6,3]=1 de MAX_CAP: 1.00
-X[6,8]=1 de MAX_CAP: 4.00
+X[6,8]=2 de MAX_CAP: 4.00
 X[6,9]=1 de MAX_CAP: 1.00
 X[7,4]=1 de MAX_CAP: 1.00
 X[7,8]=3 de MAX_CAP: 4.00
 X[8,6]=3 de MAX_CAP: 3.00
 X[8,7]=3 de MAX_CAP: 3.00
 X[8,11]=1 de MAX_CAP: 4.00
-X[8,18]=3 de MAX_CAP: 4.00
+X[8,12]=1 de MAX_CAP: 1.00
+X[8,18]=2 de MAX_CAP: 4.00
 X[8,20]=2 de MAX_CAP: 3.00
 X[9,10]=3 de MAX_CAP: 4.00
-X[9,12]=4 de MAX_CAP: 4.00
+X[9,12]=2 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
 X[11,7]=1 de MAX_CAP: 1.00
 X[11,14]=1 de MAX_CAP: 1.00
 X[11,20]=1 de MAX_CAP: 1.00
-X[12,8]=1 de MAX_CAP: 4.00
 X[12,13]=1 de MAX_CAP: 1.00
 X[12,21]=3 de MAX_CAP: 3.00
 X[13,9]=1 de MAX_CAP: 1.00
@@ -1348,7 +1352,7 @@ X[16,17]=1 de MAX_CAP: 2.00
 X[17,8]=1 de MAX_CAP: 1.00
 X[17,16]=2 de MAX_CAP: 2.00
 X[17,18]=2 de MAX_CAP: 2.00
-X[18,1]=3 de MAX_CAP: -1.00
+X[18,8]=2 de MAX_CAP: 2.00
 X[18,17]=4 de MAX_CAP: 4.00
 X[18,21]=2 de MAX_CAP: 3.00
 X[19,12]=1 de MAX_CAP: 1.00
@@ -1392,19 +1396,19 @@ nó de destino no grafo:  19
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 1.0
-X[0,1]=3 de MAX_CAP: 4.00
-X[0,2]=1 de MAX_CAP: 1.00
+X[0,1]=4 de MAX_CAP: 4.00
+X[0,2]=1 de MAX_CAP: -1.00
 X[1,0]=4 de MAX_CAP: 4.00
+X[1,3]=1 de MAX_CAP: 1.00
 X[1,9]=1 de MAX_CAP: 2.00
-X[2,3]=3 de MAX_CAP: 3.00
+X[2,0]=1 de MAX_CAP: 3.00
+X[2,3]=1 de MAX_CAP: 3.00
 X[2,4]=3 de MAX_CAP: 4.00
 X[3,5]=3 de MAX_CAP: 4.00
-X[3,6]=1 de MAX_CAP: 4.00
 X[4,2]=4 de MAX_CAP: 4.00
 X[5,8]=3 de MAX_CAP: 3.00
 X[6,1]=2 de MAX_CAP: 2.00
 X[6,3]=1 de MAX_CAP: 1.00
-X[6,9]=1 de MAX_CAP: 1.00
 X[7,4]=1 de MAX_CAP: 1.00
 X[7,8]=3 de MAX_CAP: 4.00
 X[8,6]=3 de MAX_CAP: 3.00
@@ -1414,13 +1418,12 @@ X[8,12]=1 de MAX_CAP: 1.00
 X[8,18]=2 de MAX_CAP: 4.00
 X[8,20]=2 de MAX_CAP: 3.00
 X[9,10]=3 de MAX_CAP: 4.00
-X[9,12]=3 de MAX_CAP: 4.00
+X[9,12]=2 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
 X[11,7]=1 de MAX_CAP: 1.00
 X[11,14]=1 de MAX_CAP: 1.00
 X[11,20]=1 de MAX_CAP: 1.00
 X[12,13]=1 de MAX_CAP: 1.00
-X[12,19]=1 de MAX_CAP: 1.00
 X[12,21]=3 de MAX_CAP: 3.00
 X[13,9]=1 de MAX_CAP: 1.00
 X[14,11]=2 de MAX_CAP: 2.00
@@ -1434,7 +1437,6 @@ X[17,18]=2 de MAX_CAP: 2.00
 X[18,8]=2 de MAX_CAP: 2.00
 X[18,17]=4 de MAX_CAP: 4.00
 X[18,21]=2 de MAX_CAP: 3.00
-X[19,2]=1 de MAX_CAP: -1.00
 X[19,12]=1 de MAX_CAP: 1.00
 X[19,23]=2 de MAX_CAP: 3.00
 X[20,8]=3 de MAX_CAP: 3.00
@@ -1475,26 +1477,27 @@ nó de destino no grafo:  21
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 3. 0. 0. 2. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 3.0
+Valor objetivo = 0.0
 X[0,1]=3 de MAX_CAP: 4.00
 X[0,2]=1 de MAX_CAP: 1.00
 X[1,0]=4 de MAX_CAP: 4.00
 X[1,3]=1 de MAX_CAP: 1.00
-X[2,3]=2 de MAX_CAP: 3.00
+X[2,3]=3 de MAX_CAP: 3.00
 X[2,4]=3 de MAX_CAP: 4.00
-X[3,5]=3 de MAX_CAP: 4.00
-X[3,6]=1 de MAX_CAP: 4.00
+X[3,2]=1 de MAX_CAP: 3.00
+X[3,5]=4 de MAX_CAP: 4.00
 X[4,2]=4 de MAX_CAP: 4.00
-X[4,7]=2 de MAX_CAP: 4.00
+X[5,3]=1 de MAX_CAP: 4.00
 X[5,8]=3 de MAX_CAP: 3.00
 X[6,1]=2 de MAX_CAP: 2.00
-X[6,3]=1 de MAX_CAP: 1.00
 X[6,9]=1 de MAX_CAP: 1.00
+X[7,4]=1 de MAX_CAP: 1.00
 X[7,8]=3 de MAX_CAP: 4.00
 X[8,6]=3 de MAX_CAP: 3.00
+X[8,7]=3 de MAX_CAP: 3.00
 X[8,11]=1 de MAX_CAP: 4.00
 X[8,12]=1 de MAX_CAP: 1.00
-X[8,18]=3 de MAX_CAP: 4.00
+X[8,18]=2 de MAX_CAP: 4.00
 X[8,20]=2 de MAX_CAP: 3.00
 X[9,10]=3 de MAX_CAP: 4.00
 X[9,12]=2 de MAX_CAP: 4.00
@@ -1513,12 +1516,13 @@ X[16,17]=1 de MAX_CAP: 2.00
 X[17,8]=1 de MAX_CAP: 1.00
 X[17,16]=2 de MAX_CAP: 2.00
 X[17,18]=2 de MAX_CAP: 2.00
+X[18,8]=2 de MAX_CAP: 2.00
 X[18,17]=4 de MAX_CAP: 4.00
-X[18,21]=1 de MAX_CAP: 3.00
+X[18,21]=2 de MAX_CAP: 3.00
 X[19,12]=1 de MAX_CAP: 1.00
 X[19,23]=2 de MAX_CAP: 3.00
 X[20,8]=3 de MAX_CAP: 3.00
-X[21,4]=3 de MAX_CAP: -1.00
+X[21,18]=4 de MAX_CAP: 4.00
 X[21,22]=1 de MAX_CAP: 2.00
 X[22,23]=1 de MAX_CAP: 1.00
 X[23,19]=3 de MAX_CAP: 3.00
@@ -1555,42 +1559,49 @@ nó de destino no grafo:  17
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 3. 0. 0. 2. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 7.0
-X[0,1]=3 de MAX_CAP: 4.00
+Valor objetivo = 8.0
+X[0,1]=1 de MAX_CAP: 4.00
 X[0,2]=1 de MAX_CAP: 1.00
-X[1,0]=4 de MAX_CAP: 4.00
 X[1,3]=1 de MAX_CAP: 1.00
-X[2,3]=2 de MAX_CAP: 3.00
-X[2,4]=3 de MAX_CAP: 4.00
-X[3,5]=3 de MAX_CAP: 4.00
+X[1,6]=2 de MAX_CAP: 3.00
+X[2,0]=2 de MAX_CAP: 3.00
+X[2,3]=3 de MAX_CAP: 3.00
+X[3,5]=4 de MAX_CAP: 4.00
 X[3,6]=1 de MAX_CAP: 4.00
 X[4,2]=4 de MAX_CAP: 4.00
-X[5,8]=3 de MAX_CAP: 3.00
+X[4,7]=4 de MAX_CAP: 4.00
+X[5,4]=8 de MAX_CAP: -1.00
 X[6,1]=2 de MAX_CAP: 2.00
 X[6,3]=1 de MAX_CAP: 1.00
+X[6,8]=2 de MAX_CAP: 4.00
 X[6,9]=1 de MAX_CAP: 1.00
-X[7,4]=1 de MAX_CAP: 1.00
 X[7,8]=4 de MAX_CAP: 4.00
-X[7,11]=2 de MAX_CAP: 4.00
+X[7,11]=1 de MAX_CAP: 4.00
+X[8,5]=4 de MAX_CAP: 4.00
 X[8,6]=3 de MAX_CAP: 3.00
 X[8,11]=3 de MAX_CAP: 4.00
 X[8,12]=1 de MAX_CAP: 1.00
-X[8,17]=2 de MAX_CAP: 2.00
 X[8,18]=2 de MAX_CAP: 4.00
 X[8,20]=2 de MAX_CAP: 3.00
 X[9,10]=3 de MAX_CAP: 4.00
 X[9,12]=2 de MAX_CAP: 4.00
 X[10,9]=3 de MAX_CAP: 3.00
+X[11,7]=1 de MAX_CAP: 1.00
 X[11,8]=3 de MAX_CAP: 3.00
 X[11,14]=1 de MAX_CAP: 1.00
 X[11,20]=1 de MAX_CAP: 1.00
 X[12,13]=1 de MAX_CAP: 1.00
 X[12,21]=3 de MAX_CAP: 3.00
 X[13,9]=1 de MAX_CAP: 1.00
-X[14,15]=1 de MAX_CAP: 2.00
-X[15,16]=1 de MAX_CAP: 1.00
+X[14,11]=2 de MAX_CAP: 2.00
+X[14,15]=2 de MAX_CAP: 2.00
+X[15,14]=3 de MAX_CAP: 4.00
+X[16,15]=1 de MAX_CAP: 1.00
 X[16,17]=1 de MAX_CAP: 2.00
-X[17,7]=7 de MAX_CAP: -1.00
+X[17,8]=1 de MAX_CAP: 1.00
+X[17,16]=2 de MAX_CAP: 2.00
+X[17,18]=2 de MAX_CAP: 2.00
+X[18,8]=2 de MAX_CAP: 2.00
 X[18,17]=4 de MAX_CAP: 4.00
 X[18,21]=2 de MAX_CAP: 3.00
 X[19,12]=1 de MAX_CAP: 1.00
@@ -1601,7 +1612,7 @@ X[21,22]=1 de MAX_CAP: 2.00
 X[22,23]=1 de MAX_CAP: 1.00
 X[23,19]=3 de MAX_CAP: 3.00
 --------------------------------------- Matriz utilizada: ---------------------------------------------
-datasets/geant2/connect_matrix_geant2_2.txt
+datasets/geant2/connect_matrix_2_geant2.txt
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  14
@@ -1635,40 +1646,37 @@ nó de destino no grafo:  23
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 4. 0. 0. 3. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 5.0
-X[0,1]=3 de MAX_CAP: 4.00
+Valor objetivo = 6.0
+X[0,1]=4 de MAX_CAP: 4.00
 X[0,2]=2 de MAX_CAP: 2.00
-X[1,3]=1 de MAX_CAP: 1.00
-X[1,6]=3 de MAX_CAP: 4.00
-X[1,9]=2 de MAX_CAP: 2.00
+X[1,0]=6 de MAX_CAP: -1.00
+X[1,6]=1 de MAX_CAP: 4.00
 X[2,3]=1 de MAX_CAP: 1.00
 X[2,4]=1 de MAX_CAP: 2.00
-X[3,5]=1 de MAX_CAP: 1.00
-X[3,6]=1 de MAX_CAP: 2.00
+X[3,6]=2 de MAX_CAP: 2.00
 X[4,7]=3 de MAX_CAP: 4.00
-X[5,8]=1 de MAX_CAP: 4.00
+X[5,3]=1 de MAX_CAP: 1.00
+X[5,8]=2 de MAX_CAP: 4.00
 X[6,1]=3 de MAX_CAP: 3.00
 X[6,8]=1 de MAX_CAP: 1.00
-X[6,9]=1 de MAX_CAP: 3.00
 X[7,4]=2 de MAX_CAP: 2.00
 X[7,8]=3 de MAX_CAP: 4.00
 X[7,11]=2 de MAX_CAP: 2.00
+X[8,5]=3 de MAX_CAP: 3.00
 X[8,7]=4 de MAX_CAP: 4.00
 X[8,11]=1 de MAX_CAP: 4.00
 X[8,12]=1 de MAX_CAP: 1.00
-X[8,18]=2 de MAX_CAP: 2.00
 X[9,6]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
-X[9,13]=2 de MAX_CAP: 2.00
 X[10,9]=1 de MAX_CAP: 1.00
 X[11,8]=1 de MAX_CAP: 1.00
 X[11,14]=1 de MAX_CAP: 2.00
 X[11,20]=1 de MAX_CAP: 2.00
-X[12,13]=1 de MAX_CAP: 3.00
+X[12,13]=2 de MAX_CAP: 3.00
 X[12,19]=2 de MAX_CAP: 2.00
 X[12,21]=1 de MAX_CAP: 1.00
+X[13,9]=1 de MAX_CAP: 1.00
 X[13,10]=1 de MAX_CAP: 1.00
-X[13,12]=2 de MAX_CAP: 2.00
 X[14,15]=1 de MAX_CAP: 1.00
 X[15,16]=1 de MAX_CAP: 2.00
 X[16,17]=1 de MAX_CAP: 3.00
@@ -1676,11 +1684,13 @@ X[17,8]=1 de MAX_CAP: 1.00
 X[17,18]=1 de MAX_CAP: 3.00
 X[18,17]=1 de MAX_CAP: 1.00
 X[18,21]=2 de MAX_CAP: 4.00
+X[19,12]=3 de MAX_CAP: 4.00
 X[19,23]=2 de MAX_CAP: 2.00
 X[20,8]=1 de MAX_CAP: 1.00
-X[21,22]=3 de MAX_CAP: 3.00
-X[22,23]=3 de MAX_CAP: 3.00
-X[23,0]=5 de MAX_CAP: -1.00
+X[21,18]=2 de MAX_CAP: 2.00
+X[21,22]=1 de MAX_CAP: 3.00
+X[22,23]=1 de MAX_CAP: 3.00
+X[23,19]=3 de MAX_CAP: 4.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  3
@@ -1715,28 +1725,28 @@ nó de destino no grafo:  18
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 3.0
-X[0,1]=3 de MAX_CAP: 4.00
-X[0,2]=1 de MAX_CAP: 2.00
+X[0,1]=2 de MAX_CAP: 4.00
+X[0,2]=2 de MAX_CAP: 2.00
 X[1,0]=4 de MAX_CAP: 4.00
 X[1,3]=1 de MAX_CAP: 1.00
-X[1,6]=2 de MAX_CAP: 4.00
+X[1,6]=1 de MAX_CAP: 4.00
 X[1,9]=2 de MAX_CAP: 2.00
 X[2,3]=1 de MAX_CAP: 1.00
-X[2,4]=2 de MAX_CAP: 2.00
+X[2,4]=1 de MAX_CAP: 2.00
 X[3,5]=1 de MAX_CAP: 1.00
-X[3,6]=1 de MAX_CAP: 2.00
-X[4,2]=2 de MAX_CAP: 2.00
-X[4,7]=2 de MAX_CAP: 4.00
-X[5,8]=1 de MAX_CAP: 4.00
+X[3,6]=2 de MAX_CAP: 2.00
+X[4,1]=3 de MAX_CAP: -1.00
+X[5,3]=1 de MAX_CAP: 1.00
+X[5,8]=3 de MAX_CAP: 4.00
 X[6,1]=3 de MAX_CAP: 3.00
 X[6,8]=1 de MAX_CAP: 1.00
 X[7,4]=2 de MAX_CAP: 2.00
-X[7,8]=2 de MAX_CAP: 4.00
 X[7,11]=2 de MAX_CAP: 2.00
+X[8,5]=3 de MAX_CAP: 3.00
 X[8,7]=4 de MAX_CAP: 4.00
 X[8,11]=1 de MAX_CAP: 4.00
 X[8,12]=1 de MAX_CAP: 1.00
-X[8,18]=1 de MAX_CAP: 2.00
+X[8,18]=2 de MAX_CAP: 2.00
 X[9,6]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
 X[9,13]=1 de MAX_CAP: 2.00
@@ -1754,7 +1764,7 @@ X[15,16]=1 de MAX_CAP: 2.00
 X[16,17]=1 de MAX_CAP: 3.00
 X[17,8]=1 de MAX_CAP: 1.00
 X[17,18]=1 de MAX_CAP: 3.00
-X[18,1]=3 de MAX_CAP: -1.00
+X[18,8]=4 de MAX_CAP: 4.00
 X[18,17]=1 de MAX_CAP: 1.00
 X[19,23]=1 de MAX_CAP: 2.00
 X[20,8]=1 de MAX_CAP: 1.00
@@ -1797,22 +1807,22 @@ nó de destino no grafo:  19
 ----------------------------------Resultado-----------------------------------------
 Solucao:
 Valor objetivo = 1.0
-X[0,1]=2 de MAX_CAP: 4.00
-X[0,2]=1 de MAX_CAP: 2.00
-X[1,3]=1 de MAX_CAP: 1.00
-X[1,6]=2 de MAX_CAP: 4.00
-X[1,9]=2 de MAX_CAP: 2.00
-X[2,0]=3 de MAX_CAP: 3.00
+X[0,1]=3 de MAX_CAP: 4.00
+X[0,2]=1 de MAX_CAP: -1.00
+X[1,0]=4 de MAX_CAP: 4.00
+X[1,6]=1 de MAX_CAP: 4.00
+X[1,9]=1 de MAX_CAP: 2.00
 X[2,3]=1 de MAX_CAP: 1.00
-X[3,5]=1 de MAX_CAP: 1.00
+X[2,4]=2 de MAX_CAP: 2.00
 X[3,6]=2 de MAX_CAP: 2.00
 X[4,2]=2 de MAX_CAP: 2.00
+X[4,7]=2 de MAX_CAP: 4.00
 X[5,3]=1 de MAX_CAP: 1.00
-X[5,8]=3 de MAX_CAP: 4.00
+X[5,8]=2 de MAX_CAP: 4.00
 X[6,1]=3 de MAX_CAP: 3.00
 X[6,8]=1 de MAX_CAP: 1.00
-X[6,9]=1 de MAX_CAP: 3.00
 X[7,4]=2 de MAX_CAP: 2.00
+X[7,8]=2 de MAX_CAP: 4.00
 X[7,11]=2 de MAX_CAP: 2.00
 X[8,5]=3 de MAX_CAP: 3.00
 X[8,7]=4 de MAX_CAP: 4.00
@@ -1821,30 +1831,28 @@ X[8,12]=1 de MAX_CAP: 1.00
 X[8,18]=2 de MAX_CAP: 2.00
 X[9,6]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
-X[9,13]=2 de MAX_CAP: 2.00
+X[9,13]=1 de MAX_CAP: 2.00
 X[10,9]=1 de MAX_CAP: 1.00
 X[11,8]=1 de MAX_CAP: 1.00
 X[11,14]=1 de MAX_CAP: 2.00
 X[11,20]=1 de MAX_CAP: 2.00
 X[12,13]=1 de MAX_CAP: 3.00
-X[12,19]=2 de MAX_CAP: 2.00
 X[12,21]=1 de MAX_CAP: 1.00
+X[13,9]=1 de MAX_CAP: 1.00
 X[13,10]=1 de MAX_CAP: 1.00
-X[13,12]=2 de MAX_CAP: 2.00
 X[14,15]=1 de MAX_CAP: 1.00
 X[15,16]=1 de MAX_CAP: 2.00
 X[16,17]=1 de MAX_CAP: 3.00
 X[17,8]=1 de MAX_CAP: 1.00
 X[17,18]=1 de MAX_CAP: 3.00
-X[18,8]=4 de MAX_CAP: 4.00
+X[18,8]=3 de MAX_CAP: 4.00
 X[18,17]=1 de MAX_CAP: 1.00
-X[19,2]=1 de MAX_CAP: -1.00
-X[19,23]=1 de MAX_CAP: 2.00
+X[18,21]=1 de MAX_CAP: 4.00
 X[20,8]=1 de MAX_CAP: 1.00
 X[21,18]=2 de MAX_CAP: 2.00
-X[21,22]=2 de MAX_CAP: 3.00
+X[21,22]=3 de MAX_CAP: 3.00
 X[22,21]=3 de MAX_CAP: 3.00
-X[22,23]=2 de MAX_CAP: 3.00
+X[22,23]=3 de MAX_CAP: 3.00
 X[23,22]=3 de MAX_CAP: 3.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
@@ -1879,22 +1887,17 @@ nó de destino no grafo:  21
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 4. 0. 0. 3. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 3.0
-X[0,1]=1 de MAX_CAP: 4.00
+Valor objetivo = 0.0
+X[0,1]=2 de MAX_CAP: 4.00
 X[0,2]=2 de MAX_CAP: 2.00
+X[1,0]=4 de MAX_CAP: 4.00
 X[1,3]=1 de MAX_CAP: 1.00
-X[1,6]=1 de MAX_CAP: 4.00
-X[1,9]=2 de MAX_CAP: 2.00
-X[2,0]=3 de MAX_CAP: 3.00
 X[2,3]=1 de MAX_CAP: 1.00
-X[3,5]=1 de MAX_CAP: 1.00
+X[2,4]=1 de MAX_CAP: 2.00
 X[3,6]=2 de MAX_CAP: 2.00
-X[4,2]=2 de MAX_CAP: 2.00
 X[4,7]=3 de MAX_CAP: 4.00
-X[5,3]=1 de MAX_CAP: 1.00
 X[5,8]=3 de MAX_CAP: 4.00
 X[6,1]=3 de MAX_CAP: 3.00
-X[6,8]=1 de MAX_CAP: 1.00
 X[7,4]=2 de MAX_CAP: 2.00
 X[7,8]=3 de MAX_CAP: 4.00
 X[7,11]=2 de MAX_CAP: 2.00
@@ -1902,34 +1905,31 @@ X[8,5]=3 de MAX_CAP: 3.00
 X[8,7]=4 de MAX_CAP: 4.00
 X[8,11]=1 de MAX_CAP: 4.00
 X[8,12]=1 de MAX_CAP: 1.00
-X[8,18]=1 de MAX_CAP: 2.00
 X[9,6]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
-X[9,13]=1 de MAX_CAP: 2.00
 X[10,9]=1 de MAX_CAP: 1.00
 X[11,8]=1 de MAX_CAP: 1.00
 X[11,14]=1 de MAX_CAP: 2.00
 X[11,20]=1 de MAX_CAP: 2.00
 X[12,13]=2 de MAX_CAP: 3.00
-X[12,19]=1 de MAX_CAP: 2.00
+X[12,19]=2 de MAX_CAP: 2.00
 X[12,21]=1 de MAX_CAP: 1.00
+X[13,9]=1 de MAX_CAP: 1.00
 X[13,10]=1 de MAX_CAP: 1.00
-X[13,12]=2 de MAX_CAP: 2.00
 X[14,15]=1 de MAX_CAP: 1.00
 X[15,16]=1 de MAX_CAP: 2.00
 X[16,17]=1 de MAX_CAP: 3.00
 X[17,8]=1 de MAX_CAP: 1.00
 X[17,18]=1 de MAX_CAP: 3.00
 X[18,17]=1 de MAX_CAP: 1.00
-X[18,21]=3 de MAX_CAP: 4.00
-X[19,23]=1 de MAX_CAP: 2.00
+X[18,21]=2 de MAX_CAP: 4.00
+X[19,12]=3 de MAX_CAP: 4.00
+X[19,23]=2 de MAX_CAP: 2.00
 X[20,8]=1 de MAX_CAP: 1.00
-X[21,4]=3 de MAX_CAP: -1.00
 X[21,18]=2 de MAX_CAP: 2.00
-X[21,22]=2 de MAX_CAP: 3.00
-X[22,21]=3 de MAX_CAP: 3.00
-X[22,23]=2 de MAX_CAP: 3.00
-X[23,22]=3 de MAX_CAP: 3.00
+X[21,22]=1 de MAX_CAP: 3.00
+X[22,23]=1 de MAX_CAP: 3.00
+X[23,19]=3 de MAX_CAP: 4.00
 ----------------------------------------------- Parâmetros------------------------------------------
 # Nó de origem (Source node) e Nó de destino (Target node)
 # Valor máximo da função objetivo:  15
@@ -1963,7 +1963,7 @@ nó de destino no grafo:  17
  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 4. 0. 0. 3. 0.]]
 ----------------------------------Resultado-----------------------------------------
 Solucao:
-Valor objetivo = 5.0
+Valor objetivo = 4.0
 X[0,1]=1 de MAX_CAP: 4.00
 X[0,2]=2 de MAX_CAP: 2.00
 X[1,3]=1 de MAX_CAP: 1.00
@@ -1972,19 +1972,17 @@ X[1,9]=2 de MAX_CAP: 2.00
 X[2,0]=3 de MAX_CAP: 3.00
 X[2,3]=1 de MAX_CAP: 1.00
 X[3,5]=1 de MAX_CAP: 1.00
-X[3,6]=2 de MAX_CAP: 2.00
+X[3,6]=1 de MAX_CAP: 2.00
 X[4,2]=2 de MAX_CAP: 2.00
-X[5,3]=1 de MAX_CAP: 1.00
-X[5,8]=3 de MAX_CAP: 4.00
+X[4,7]=2 de MAX_CAP: 4.00
+X[5,4]=4 de MAX_CAP: -1.00
 X[6,1]=3 de MAX_CAP: 3.00
-X[6,8]=1 de MAX_CAP: 1.00
-X[7,4]=2 de MAX_CAP: 2.00
-X[7,8]=1 de MAX_CAP: 4.00
+X[7,8]=4 de MAX_CAP: 4.00
 X[7,11]=2 de MAX_CAP: 2.00
 X[8,5]=3 de MAX_CAP: 3.00
+X[8,7]=4 de MAX_CAP: 4.00
 X[8,11]=1 de MAX_CAP: 4.00
 X[8,12]=1 de MAX_CAP: 1.00
-X[8,17]=3 de MAX_CAP: 3.00
 X[8,18]=2 de MAX_CAP: 2.00
 X[9,6]=1 de MAX_CAP: 1.00
 X[9,12]=1 de MAX_CAP: 1.00
@@ -2001,8 +1999,9 @@ X[13,12]=2 de MAX_CAP: 2.00
 X[14,15]=1 de MAX_CAP: 1.00
 X[15,16]=1 de MAX_CAP: 2.00
 X[16,17]=1 de MAX_CAP: 3.00
-X[17,7]=5 de MAX_CAP: -1.00
-X[18,8]=3 de MAX_CAP: 4.00
+X[17,8]=1 de MAX_CAP: 1.00
+X[17,18]=1 de MAX_CAP: 3.00
+X[18,8]=4 de MAX_CAP: 4.00
 X[18,17]=1 de MAX_CAP: 1.00
 X[19,23]=1 de MAX_CAP: 2.00
 X[20,8]=1 de MAX_CAP: 1.00
